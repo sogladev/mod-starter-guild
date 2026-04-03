@@ -55,8 +55,6 @@ This module automatically joins new players to a guild of your choice on first l
 
 
 #include "Chat.h"
-#include "Configuration/Config.h"
-#include "GuildMgr.h"
 #include "Player.h"
 #include "ScriptMgr.h"
 
@@ -74,9 +72,9 @@ public:
 
     void OnPlayerLogin(Player* player) override;
     void OnPlayerFirstLogin(Player* player) override;
-    void addPlayerToGuild(Player* player);
-    void OnPlayerLevelChanged(Player * player, uint8 previousLevel) override;
+    void OnPlayerLevelChanged(Player* player, uint8 previousLevel) override;
 
+    static void AddPlayerToGuild(Player* player);
 };
 
 void AddStarterGuildScripts()
