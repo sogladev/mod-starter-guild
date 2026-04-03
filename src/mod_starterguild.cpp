@@ -44,11 +44,13 @@ void StarterGuild::addPlayerToGuild(Player* player)
 
             // Inform the player they have joined the guild
             std::string welcome_text = player->GetTeamId() == TEAM_ALLIANCE ? GUILD_WELCOME_TEXT_ALLIANCE : GUILD_WELCOME_TEXT_HORDE;
+            std::string guild_name = player->GetGuildName();
+            std::string player_name = player->GetPlayerName();
 
             welcome_text = fmt::format(
                 fmt::runtime(welcome_text),
-                fmt::arg("GUILD", player->GetGuildName()),
-                fmt::arg("PLAYER", player->GetPlayerName())
+                fmt::arg("GUILD", guild_name),
+                fmt::arg("PLAYER", player_name)
             );
 
             ChatHandler(player->GetSession()).SendSysMessage(welcome_text);
